@@ -5,15 +5,14 @@ import './FloatingHearts.css';
 import img1 from '../assets/1acd2b13-390f-4f39-adb1-f4cfefb17264.jpg';
 import img2 from '../assets/475902fa-dcc3-4b4e-9c4d-940c99bce2c6.jpg';
 import img3 from '../assets/4f22c20d-16be-42ff-8a81-1c6eddd822f7.jpg';
-import img4 from '../assets/610505287_1279615797326112_6721771468832532955_n.jpg';
-import img5 from '../assets/610978366_808576432205503_3844477797273207243_n.jpg';
 import img6 from '../assets/bcf02cd7-bc99-4027-9360-d78ac0f4ea9d.jpg';
 import img7 from '../assets/dfc5a7d0-3308-447b-a1be-cfaa19fccf95.jpg';
 import img8 from '../assets/9d602ed8-73cc-49c8-9e4a-95882598c237.jpg';
 import img9 from '../assets/0f26b379-a019-4644-a996-d5feb0844f16.jpg'; 
 
 // Removed the 'a262e9c3...' image which was likely the white page
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+// Removed the '6105...' and '6109...' images since the user deleted them
+const images = [img1, img2, img3, img6, img7, img8, img9];
 
 export default function FloatingHearts() {
   const [hearts, setHearts] = useState([]);
