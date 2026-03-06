@@ -1,0 +1,119 @@
+.photo-card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(255, 107, 129, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(255, 107, 129, 0.25);
+}
+
+.photo-card-container.reversed {
+  flex-direction: row-reverse;
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-placeholder {
+  width: 250px;
+  height: 300px;
+  background: var(--background);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 2px dashed var(--secondary);
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.placeholder-text {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  padding: 1rem;
+  z-index: 2;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Decorative Corners for the Photo */
+.corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary);
+  opacity: 0.6;
+}
+
+.top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+.text-section {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.text-section h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.decorative-line {
+  height: 3px;
+  width: 60px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.message {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+@media (max-width: 768px) {
+  .photo-card-container, .photo-card-container.reversed {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .image-placeholder {
+    width: 200px;
+    height: 240px;
+  }
+  
+  .text-section h2 {
+    font-size: 1.6rem;
+  }
+  
+  .message {
+    font-size: 1rem;
+  }
+}
