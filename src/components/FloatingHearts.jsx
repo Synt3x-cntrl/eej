@@ -11,8 +11,9 @@ import img6 from '../assets/a262e9c3-0167-485e-bdd9-e19ebcf6aaf3.jpg';
 import img7 from '../assets/bcf02cd7-bc99-4027-9360-d78ac0f4ea9d.jpg';
 import img8 from '../assets/dfc5a7d0-3308-447b-a1be-cfaa19fccf95.jpg';
 import img9 from '../assets/9d602ed8-73cc-49c8-9e4a-95882598c237.jpg';
+import img10 from '../assets/0f26b379-a019-4644-a996-d5feb0844f16.jpg'; // The newly added photo
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
 export default function FloatingHearts() {
   const [hearts, setHearts] = useState([]);
@@ -23,7 +24,7 @@ export default function FloatingHearts() {
       const newHearts = Array.from({ length: 20 }).map((_, i) => ({
         id: i,
         left: `${Math.random() * 90}%`, // keep away from very edge
-        size: Math.random() * 50 + 70, // size between 70px and 120px
+        size: Math.random() * 70 + 100, // BIGGER size: between 100px and 170px
         duration: Math.random() * 15 + 15, // slower floating 15-30s
         delay: Math.random() * 20,
         img: images[i % images.length],
