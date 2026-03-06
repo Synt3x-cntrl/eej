@@ -11,24 +11,49 @@
 
 .photo-heart {
   position: absolute;
-  bottom: -20%;
+  bottom: -30%;
   background-size: cover;
   background-position: center;
-  /* inline SVG data uri for a heart mask */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
   
   /* drop shadow hack with filter since mask hides pure box-shadow */
   filter: drop-shadow(0 8px 15px rgba(255, 107, 129, 0.4));
   animation: floatUpImage infinite linear;
   opacity: 0.85;
   transition: opacity 0.3s;
+}
+
+/* Base Mask settings */
+.shape-heart, .shape-circle, .shape-blob, .shape-star {
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+/* 1. Heart Shape */
+.shape-heart {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+}
+
+/* 2. Circle / Soft Oval Shape */
+.shape-circle {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='48'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='48'/%3E%3C/svg%3E");
+}
+
+/* 3. Soft Blob Shape */
+.shape-blob {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-46C87.4,-32.9,90.1,-16.4,87.6,-1.4C85,13.5,77.3,27,69.5,40.1C61.6,53.2,53.6,65.8,42.4,75.3C31.1,84.7,15.6,90.9,-0.3,91.5C-16.2,92.1,-32.4,87,-45.5,77.5C-58.6,67.9,-68.6,53.8,-75.6,38.6C-82.5,23.3,-86.3,6.8,-83.4,-8.4C-80.5,-23.7,-70.8,-37.8,-59,-48.6C-47.3,-59.4,-33.5,-66.9,-19.7,-72.2C-6,-77.4,7.8,-80.4,21.8,-80C35.8,-79.6,50,-75.8,59,-67.2Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-46C87.4,-32.9,90.1,-16.4,87.6,-1.4C85,13.5,77.3,27,69.5,40.1C61.6,53.2,53.6,65.8,42.4,75.3C31.1,84.7,15.6,90.9,-0.3,91.5C-16.2,92.1,-32.4,87,-45.5,77.5C-58.6,67.9,-68.6,53.8,-75.6,38.6C-82.5,23.3,-86.3,6.8,-83.4,-8.4C-80.5,-23.7,-70.8,-37.8,-59,-48.6C-47.3,-59.4,-33.5,-66.9,-19.7,-72.2C-6,-77.4,7.8,-80.4,21.8,-80C35.8,-79.6,50,-75.8,59,-67.2Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+}
+
+/* 4. Soft Star Shape */
+.shape-star {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E");
 }
 
 @keyframes floatUpImage {

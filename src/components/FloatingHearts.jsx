@@ -18,17 +18,21 @@ const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 export default function FloatingHearts() {
   const [hearts, setHearts] = useState([]);
 
+  // Array of css classes representing different mask shapes
+  const shapes = ['shape-heart', 'shape-circle', 'shape-blob', 'shape-star'];
+
   useEffect(() => {
-    // Generate initial hearts with images
+    // Generate initial floating items with images and random shapes
     const generateHearts = () => {
       const newHearts = Array.from({ length: 20 }).map((_, i) => ({
         id: i,
-        left: `${Math.random() * 90}%`, // keep away from very edge
-        size: Math.random() * 70 + 100, // BIGGER size: between 100px and 170px
-        duration: Math.random() * 15 + 15, // slower floating 15-30s
+        left: `${Math.random() * 90}%`, 
+        size: Math.random() * 100 + 150, // EVEN BIGGER: between 150px and 250px
+        duration: Math.random() * 20 + 20, // slower floating 20-40s so they are graceful
         delay: Math.random() * 20,
         img: images[i % images.length],
         rotation: (Math.random() - 0.5) * 40, // random start rotation
+        shapeClass: shapes[Math.floor(Math.random() * shapes.length)] // Random shape
       }));
       setHearts(newHearts);
     };
@@ -41,7 +45,7 @@ export default function FloatingHearts() {
       {hearts.map((heart) => (
         <div
           key={heart.id}
-          className="photo-heart"
+          className={`photo-heart ${heart.shapeClass}`}
           style={{
             left: heart.left,
             width: `${heart.size}px`,
