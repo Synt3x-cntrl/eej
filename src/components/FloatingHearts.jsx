@@ -27,8 +27,8 @@ export default function FloatingHearts() {
       const newHearts = Array.from({ length: 20 }).map((_, i) => ({
         id: i,
         left: `${Math.random() * 90}%`, 
-        size: Math.random() * 100 + 150, // EVEN BIGGER: between 150px and 250px
-        duration: Math.random() * 20 + 20, // slower floating 20-40s so they are graceful
+        size: Math.random() * 120 + 180, // INCREASED BIGGER: between 180px and 300px
+        duration: Math.random() * 20 + 20, // keep the total duration similar 20-40s 
         delay: Math.random() * 20,
         img: images[i % images.length],
         rotation: (Math.random() - 0.5) * 40, // random start rotation

@@ -17,7 +17,7 @@
   
   /* drop shadow hack with filter since mask hides pure box-shadow */
   filter: drop-shadow(0 8px 15px rgba(255, 107, 129, 0.4));
-  animation: floatUpImage infinite linear;
+  animation: floatUpImage infinite cubic-bezier(0.1, 0.9, 0.2, 1); /* Start fast, smooth and very slow at the top */
   opacity: 0.85;
   transition: opacity 0.3s;
 }
@@ -58,10 +58,10 @@
 
 @keyframes floatUpImage {
   0% {
-    transform: translateY(0) scale(0.8) rotate(var(--start-rotation));
+    transform: translateY(0) scale(0.6) rotate(var(--start-rotation)); /* Start slightly smaller to zoom in */
     opacity: 0;
   }
-  10% {
+  5% {
     opacity: 0.9;
   }
   90% {
