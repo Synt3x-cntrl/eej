@@ -50,10 +50,14 @@ export default function FloatingHearts() {
     
     // Pause animation by forcing inline styles
     const rect = e.target.getBoundingClientRect();
+    const computedStyle = window.getComputedStyle(e.target);
+    
     e.target.style.animation = 'none';
+    e.target.style.bottom = 'auto'; // Disable CSS bottom so 'top' works
     e.target.style.left = `${rect.left}px`;
     e.target.style.top = `${rect.top}px`;
-    e.target.style.transform = `rotate(${e.target.style.getPropertyValue('--start-rotation')})`;
+    // Lock the current transform matrix (keeps its rotation and scale exactly where it was)
+    e.target.style.transform = computedStyle.transform;
   };
 
   const handlePointerMove = (e, index) => {
