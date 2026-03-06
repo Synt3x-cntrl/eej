@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './FloatingHearts.css';
 
 // Import images
@@ -18,21 +18,22 @@ const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 export default function FloatingHearts() {
   const [hearts, setHearts] = useState([]);
 
-  // Array of css classes representing different mask shapes
-  const shapes = ['shape-heart', 'shape-circle', 'shape-blob', 'shape-star'];
-
   useEffect(() => {
+    // Array of css classes representing different mask shapes
+    const shapes = ['shape-heart', 'shape-circle', 'shape-blob', 'shape-star'];
+
     // Generate initial floating items with images and random shapes
     const generateHearts = () => {
       const newHearts = Array.from({ length: 15 }).map((_, i) => ({
         id: i,
-        left: Math.random() * 80 + 10, // store as number for drag logic
-        top: Math.random() * 100 + 110, // Start below screen initially
+        left: Math.random() * 80 + 10,
+        top: Math.random() * 100 + 110,
         size: Math.random() * 120 + 180, 
         duration: Math.random() * 20 + 20, 
         delay: Math.random() * 20,
         img: images[i % images.length],
-        rotation: (Math.random() - 0.5) * 40, 
+        startRot: (Math.random() - 0.5) * 40,
+        endRot: (Math.random() - 0.5) * 40 + (Math.random() > 0.5 ? 20 : -20),
         shapeClass: shapes[Math.floor(Math.random() * shapes.length)] 
       }));
       setHearts(newHearts);
@@ -42,7 +43,7 @@ export default function FloatingHearts() {
   }, []);
 
   // Make them dragabble
-  const handlePointerDown = (e, index) => {
+  const handlePointerDown = (e) => {
     e.target.setPointerCapture(e.pointerId);
     e.target.dataset.dragging = 'true';
     e.target.dataset.startX = e.clientX;
@@ -60,7 +61,7 @@ export default function FloatingHearts() {
     e.target.style.transform = computedStyle.transform;
   };
 
-  const handlePointerMove = (e, index) => {
+  const handlePointerMove = (e) => {
     if (e.target.dataset.dragging === 'true') {
       const dx = e.clientX - parseFloat(e.target.dataset.startX);
       const dy = e.clientY - parseFloat(e.target.dataset.startY);
@@ -83,7 +84,7 @@ export default function FloatingHearts() {
 
   return (
     <div className="hearts-background">
-      {hearts.map((heart, index) => (
+      {hearts.map((heart) => (
         <div
           key={heart.id}
           className={`photo-heart ${heart.shapeClass}`}
@@ -94,11 +95,11 @@ export default function FloatingHearts() {
             animationDuration: `${heart.duration}s`,
             animationDelay: `${heart.delay}s`,
             backgroundImage: `url(${heart.img})`,
-            '--start-rotation': `${heart.rotation}deg`,
-            '--end-rotation': `${heart.rotation + (Math.random() > 0.5 ? 20 : -20)}deg`
+            '--start-rotation': `${heart.startRot}deg`,
+            '--end-rotation': `${heart.endRot}deg`
           }}
-          onPointerDown={(e) => handlePointerDown(e, index)}
-          onPointerMove={(e) => handlePointerMove(e, index)}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
         />
