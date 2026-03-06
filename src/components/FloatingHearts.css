@@ -6,6 +6,7 @@
   height: 100%;
   overflow: hidden;
   z-index: 1;
+  /* Allow clicking on hearts but not the background container itself */
   pointer-events: none;
 }
 
@@ -14,12 +15,20 @@
   bottom: -30%;
   background-size: cover;
   background-position: center;
-  
+  pointer-events: auto; /* Allow interaction */
+  cursor: grab;
   /* drop shadow hack with filter since mask hides pure box-shadow */
   filter: drop-shadow(0 8px 15px rgba(255, 107, 129, 0.4));
   animation: floatUpImage infinite cubic-bezier(0.1, 0.9, 0.2, 1); /* Start fast, smooth and very slow at the top */
   opacity: 0.85;
   transition: opacity 0.3s;
+}
+
+.photo-heart:active, .photo-heart[data-dragging="true"] {
+  cursor: grabbing;
+  opacity: 1;
+  z-index: 50; /* Bring to front while dragging */
+  filter: drop-shadow(0 15px 25px rgba(255, 107, 129, 0.6));
 }
 
 /* Base Mask settings */
